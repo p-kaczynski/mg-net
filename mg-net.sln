@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mg-net", "mg-net\mg-net.csproj", "{CDE2E7B7-317E-44CF-BE41-536B57367ED4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mg-net.Extensions.AspNet", "mg-net.Extensions.AspNet\mg-net.Extensions.AspNet.csproj", "{058CA008-8E2A-4154-82F5-AE6C839E5DDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CDE2E7B7-317E-44CF-BE41-536B57367ED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDE2E7B7-317E-44CF-BE41-536B57367ED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDE2E7B7-317E-44CF-BE41-536B57367ED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDE2E7B7-317E-44CF-BE41-536B57367ED4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{058CA008-8E2A-4154-82F5-AE6C839E5DDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{058CA008-8E2A-4154-82F5-AE6C839E5DDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{058CA008-8E2A-4154-82F5-AE6C839E5DDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{058CA008-8E2A-4154-82F5-AE6C839E5DDE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
