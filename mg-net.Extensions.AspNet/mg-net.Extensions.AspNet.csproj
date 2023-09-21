@@ -6,7 +6,6 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <PackageVersion>0.1.0-alpha</PackageVersion>
         <Nullable>enable</Nullable>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Title>Mailgun .NET Client (Unofficial) - AspNet Configuration Extensions</Title>
         <Authors>p-kaczynski</Authors>
         <Description>Provides convinience methods for configuring Mailgun .NET Client (Unofficial)</Description>
