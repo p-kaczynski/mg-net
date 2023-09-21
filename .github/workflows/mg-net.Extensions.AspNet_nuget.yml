@@ -1,4 +1,4 @@
-name: (mg-net) Build and Publish to NuGet
+name: (mg-net.Extensions.AspNet) Build and Publish to NuGet
 
 on:
   push:
