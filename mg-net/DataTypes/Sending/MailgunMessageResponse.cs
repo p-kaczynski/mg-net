@@ -4,8 +4,7 @@ namespace mg_net.DataTypes.Sending;
 
 public class MailgunMessageResponse
 {
-    [JsonPropertyName("id")]
-    public string Id { get; set; }
+    [JsonPropertyName("id")] public string Id { get; set; } = string.Empty;
     
     [JsonPropertyName("message")]
     public string? Message{ get; set; }
