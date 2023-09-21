@@ -16,6 +16,8 @@ public class MailgunClient
     public MailgunClient(HttpClient httpClient, IOptions<MailgunClientOptions> options)
     {
         _httpClient = httpClient;
+        if (_httpClient.BaseAddress is null)
+            throw new($"{nameof(HttpClient)} for {nameof(MailgunClientOptions)} has no base address");
         _options = options;
     }
 

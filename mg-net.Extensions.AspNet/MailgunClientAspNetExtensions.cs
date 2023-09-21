@@ -10,7 +10,6 @@ public static class MailgunClientAspNetExtensions
     {
         optionAction.Invoke(services.AddOptions<MailgunClientOptions>());
         services.AddHttpClient<MailgunClient>(clientAction);
-        services.AddScoped<MailgunClient>();
     }
 
     public static void AddMailgunClient(this IServiceCollection services, Action<OptionsBuilder<MailgunClientOptions>> optionAction,
