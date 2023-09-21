@@ -20,6 +20,7 @@
         <RepositoryUrl>https://github.com/p-kaczynski/mg-net</RepositoryUrl>
         <PackageTags>mailgun</PackageTags>
         <PackageReleaseNotes>not for human consumption</PackageReleaseNotes>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
 
