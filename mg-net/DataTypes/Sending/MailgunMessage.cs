@@ -69,13 +69,13 @@ public class MailgunMessage
         AddStringContent(nameof(From), m.From.ToString());
         AddStringContent(nameof(Subject), m.Subject);
 
-        if (m.To is {Count: > 0} to)
+        if (m.To is { Count: > 0 } to)
             AddStringContents(nameof(To), to.Select(t => t.ToString()));
 
-        if (m.Cc is {Count: > 0} cc)
+        if (m.Cc is { Count: > 0 } cc)
             AddStringContents(nameof(Cc), cc.Select(t => t.ToString()));
 
-        if (m.Bcc is {Count: > 0} bcc)
+        if (m.Bcc is { Count: > 0 } bcc)
             AddStringContents(nameof(Bcc), bcc.Select(t => t.ToString()));
 
         AddStringContent(nameof(Text), m.Text);
@@ -141,7 +141,7 @@ public class MailgunMessage
 
         void AddJsonDictionary(string name, JsonObject? jObj)
         {
-            if (jObj is not null && JsonSerializer.Serialize(jObj, SerializerOptions) is {Length: > 0} json)
+            if (jObj is not null && JsonSerializer.Serialize(jObj, SerializerOptions) is { Length: > 0 } json)
                 AddStringContent(name, json);
         }
 
@@ -165,7 +165,7 @@ public class MailgunMessage
 
         void AddArbitrary(char prefix, IDictionary<string, string>? maybeDictionary)
         {
-            if (maybeDictionary is {Count: > 0})
+            if (maybeDictionary is { Count: > 0 })
                 foreach (var (key, value) in maybeDictionary)
                     content.Add(new StringContent(value), $"{prefix}:{key}");
         }

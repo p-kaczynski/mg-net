@@ -35,12 +35,12 @@ public class MailgunClient
             && await response.Content
                     .ReadFromJsonAsync<MailgunMessageResponse>(cancellationToken: cancellationToken.Value)
                     .ConfigureAwait(false) is
-                { } messageResponse
+            { } messageResponse
                 ? new MailgunSendingResult(true, messageResponse)
                 : new(false);
 
 
-        result.StatusCode = (int) response.StatusCode;
+        result.StatusCode = (int)response.StatusCode;
         result.ResponseBody = await response.Content.ReadAsStringAsync(cancellationToken.Value).ConfigureAwait(false);
 
         return result;
