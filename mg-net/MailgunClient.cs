@@ -1,7 +1,4 @@
-﻿using System.Linq.Expressions;
-using System.Net;
-using System.Net.Http.Headers;
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
 using System.Text;
 using mg_net.DataTypes.Sending;
 using Microsoft.Extensions.Options;
@@ -24,7 +21,7 @@ public class MailgunClient
     public async Task<MailgunSendingResult> Send(MailgunMessage message, CancellationToken? cancellationToken = null)
     {
         cancellationToken ??= CancellationToken.None;
-        ;
+
         var request = new HttpRequestMessage(HttpMethod.Post,
             string.Format(MailgunApiEndpoints.Messages, _options.Value.Domain));
 
@@ -39,8 +36,8 @@ public class MailgunClient
                     .ReadFromJsonAsync<MailgunMessageResponse>(cancellationToken: cancellationToken.Value)
                     .ConfigureAwait(false) is
                 { } messageResponse
-                ? new MailgunSendingResult(messageResponse)
-                : new();
+                ? new MailgunSendingResult(true, messageResponse)
+                : new(false);
 
 
         result.StatusCode = (int) response.StatusCode;
