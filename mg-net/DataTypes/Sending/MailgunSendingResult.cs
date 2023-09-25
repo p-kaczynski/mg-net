@@ -2,11 +2,11 @@ namespace mg_net.DataTypes.Sending;
 
 public class MailgunSendingResult
 {
-    private readonly bool _success;
+    public bool Success { get; }
 
     public MailgunSendingResult(bool success)
     {
-        _success = success;
+        Success = success;
     }
 
     public MailgunSendingResult(bool success, MailgunMessageResponse messageResponse) : this(success)
