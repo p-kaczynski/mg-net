@@ -18,6 +18,7 @@ Provides convinience methods for configuring Mailgun .NET Client (Unofficial)
 ```csharp
 // TODO
 ```
+
 ## Additional documentation
 
 * TODO Link to mg-net readme

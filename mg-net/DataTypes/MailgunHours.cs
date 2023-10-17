@@ -7,7 +7,10 @@ public readonly struct MailgunHours
     private MailgunHours(int h)
     {
         if (h <= 0)
+        {
             throw new ArgumentOutOfRangeException(nameof(h), $"{nameof(h)} must be positive integer");
+        }
+
         _h = h;
     }
 

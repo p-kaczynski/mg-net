@@ -4,7 +4,7 @@
         <TargetFramework>net7.0</TargetFramework>
         <RootNamespace>mg_net</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
-        <PackageVersion>0.2.0-alpha</PackageVersion>
+        <PackageVersion>0.3.0</PackageVersion>
         <Nullable>enable</Nullable>
         <Title>Mailgun .NET Client (Unofficial)</Title>
         <Authors>p-kaczynski</Authors>
@@ -18,13 +18,15 @@
         <PackageProjectUrl>https://github.com/p-kaczynski/mg-net</PackageProjectUrl>
         <RepositoryUrl>https://github.com/p-kaczynski/mg-net</RepositoryUrl>
         <PackageTags>mailgun</PackageTags>
-        <PackageReleaseNotes>not for human consumption</PackageReleaseNotes>
+        <PackageReleaseNotes>Only implements selected APIs</PackageReleaseNotes>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     </PropertyGroup>
 
 
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0"/>
+        <PackageReference Include="JetBrains.Annotations" Version="2023.2.0" PrivateAssets="All"/>
     </ItemGroup>
 
     <ItemGroup>

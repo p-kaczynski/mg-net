@@ -70,13 +70,19 @@ public class MailgunMessage
         AddStringContent(nameof(Subject), m.Subject);
 
         if (m.To is { Count: > 0 } to)
+        {
             AddStringContents(nameof(To), to.Select(t => t.ToString()));
+        }
 
         if (m.Cc is { Count: > 0 } cc)
+        {
             AddStringContents(nameof(Cc), cc.Select(t => t.ToString()));
+        }
 
         if (m.Bcc is { Count: > 0 } bcc)
+        {
             AddStringContents(nameof(Bcc), bcc.Select(t => t.ToString()));
+        }
 
         AddStringContent(nameof(Text), m.Text);
         AddStringContent(nameof(Html), m.Html);
@@ -110,74 +116,95 @@ public class MailgunMessage
         AddArbitrary('v', m.CustomVars);
 
         if (m.TestMode)
+        {
             AddStringContent(nameof(TestMode), true.ToString());
+        }
 
         return content;
 
         void AddStringContents(string name, IEnumerable<string>? values)
         {
             if (values is not null)
+            {
                 foreach (var value in values)
+                {
                     AddStringContent(name, value);
+                }
+            }
         }
 
         void AddStringContent(string name, string? value)
         {
             if (value is not null)
-                content?.Add(new StringContent(value), PropertiesMapping[name]);
+            {
+                content.Add(new StringContent(value), PropertiesMapping[name]);
+            }
         }
 
         void AddAttachments(string name, IDictionary<string, byte[]> values)
         {
             foreach (var value in values)
+            {
                 content.Add(new ByteArrayContent(value.Value), PropertiesMapping[name], value.Key);
+            }
         }
 
         void AddMailgunBool(string name, MailgunBool mb)
         {
             if (mb.GetValue() is { } value)
+            {
                 AddStringContent(name, value);
+            }
         }
 
         void AddJsonDictionary(string name, JsonObject? jObj)
         {
             if (jObj is not null && JsonSerializer.Serialize(jObj, SerializerOptions) is { Length: > 0 } json)
+            {
                 AddStringContent(name, json);
+            }
         }
 
         void AddDateTimeOffset(string name, DateTimeOffset? dto)
         {
             if (dto.HasValue)
+            {
                 AddStringContent(name, dto.Value.ToMailgunDateString());
+            }
         }
 
         void AddMailgunHours(string name, MailgunHours? hours)
         {
             if (hours.HasValue)
+            {
                 AddStringContent(name, hours.Value.GetValue());
+            }
         }
 
         void AddMailgunTzoString(string name, MailgunTzoString? str)
         {
             if (str.HasValue)
+            {
                 AddStringContent(name, str.Value.GetValue());
+            }
         }
 
         void AddArbitrary(char prefix, IDictionary<string, string>? maybeDictionary)
         {
             if (maybeDictionary is { Count: > 0 })
+            {
                 foreach (var (key, value) in maybeDictionary)
+                {
                     content.Add(new StringContent(value), $"{prefix}:{key}");
+                }
+            }
         }
     }
 
     [AttributeUsage(AttributeTargets.Property)]
     private class PropertyNameAttribute : Attribute
     {
-        public PropertyNameAttribute(string name)
-        {
-            Name = name;
-        }
+        public PropertyNameAttribute(string name) => Name = name;
 
         public string Name { get; }
     }

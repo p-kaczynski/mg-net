@@ -6,8 +6,7 @@ public class MailgunMessageResponse
 {
     [JsonPropertyName("id")] public string Id { get; set; } = string.Empty;
 
-    [JsonPropertyName("message")]
-    public string? Message { get; set; }
+    [JsonPropertyName("message")] public string? Message { get; set; }
 
     public void Deconstruct(out string id, out string? message)
     {

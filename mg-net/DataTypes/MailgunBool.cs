@@ -4,10 +4,7 @@ public readonly struct MailgunBool
 {
     private readonly bool? _b;
 
-    private MailgunBool(bool? b)
-    {
-        _b = b;
-    }
+    private MailgunBool(bool? b) => _b = b;
 
     public string? GetValue()
         => _b switch

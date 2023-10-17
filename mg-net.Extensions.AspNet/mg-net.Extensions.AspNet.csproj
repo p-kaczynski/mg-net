@@ -1,10 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
-    
+
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
         <RootNamespace>mg_net.Extensions.AspNet</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
-        <PackageVersion>0.2.0-alpha</PackageVersion>
+        <PackageVersion>0.3.0</PackageVersion>
         <Nullable>enable</Nullable>
         <Title>Mailgun .NET Client (Unofficial) - AspNet Configuration Extensions</Title>
         <Authors>p-kaczynski</Authors>
@@ -18,16 +18,16 @@
         <PackageProjectUrl>https://github.com/p-kaczynski/mg-net</PackageProjectUrl>
         <RepositoryUrl>https://github.com/p-kaczynski/mg-net</RepositoryUrl>
         <PackageTags>mailgun</PackageTags>
-        <PackageReleaseNotes>not for human consumption</PackageReleaseNotes>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     </PropertyGroup>
 
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App"/>
     </ItemGroup>
-    
+
     <ItemGroup>
-      <ProjectReference Include="..\mg-net\mg-net.csproj" />
+        <ProjectReference Include="..\mg-net\mg-net.csproj"/>
     </ItemGroup>
 
     <ItemGroup>

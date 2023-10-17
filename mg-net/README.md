@@ -18,6 +18,7 @@ In place of an official client, this is WIP attempt at exposing Mailgun API func
 ```csharp
 // TODO
 ```
+
 ## Additional documentation
 
 * Based on [Mailgun API Reference](https://documentation.mailgun.com/en/latest/api_reference.html) as of 2023-09-21

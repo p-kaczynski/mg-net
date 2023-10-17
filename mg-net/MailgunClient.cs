@@ -1,6 +1,9 @@
-﻿using System.Net.Http.Json;
+﻿using System.Diagnostics;
+using System.Net.Http.Json;
 using System.Text;
+using JetBrains.Annotations;
 using mg_net.DataTypes.Sending;
+using mg_net.DataTypes.Webhooks;
 using Microsoft.Extensions.Options;
 
 namespace mg_net;
@@ -14,13 +17,57 @@ public class MailgunClient
     {
         _httpClient = httpClient;
         if (_httpClient.BaseAddress is null)
+        {
             throw new($"{nameof(HttpClient)} for {nameof(MailgunClientOptions)} has no base address");
+        }
+
         _options = options;
     }
 
+    [PublicAPI]
+    public async Task<bool> TrySetWebhook(WebhookEvent.Type webhookType, Uri webhookUri,
+        CancellationToken? cancellationToken = null)
+    {
+        cancellationToken ??= CancellationToken.None;
+        cancellationToken.Value.ThrowIfCancellationRequested();
+
+
+        var request = new HttpRequestMessage(HttpMethod.Post,
+            string.Format(MailgunApiEndpoints.Webhooks, _options.Value.Domain));
+
+        request.Headers.Authorization = new("Basic", GetAuthString());
+        request.Content = new FormUrlEncodedContent(new[]
+        {
+            new KeyValuePair<string, string>("id", WebhookEvent.ByType[webhookType]),
+            new KeyValuePair<string, string>("url", webhookUri.ToString())
+        });
+
+        var response = await _httpClient.SendAsync(request, cancellationToken.Value).ConfigureAwait(false);
+        Trace.WriteLine($"TrySetWebhook: ({response.StatusCode}):\n{await response.Content.ReadAsStringAsync()}");
+        return response.IsSuccessStatusCode;
+    }
+
+    [PublicAPI]
+    public async Task<bool> TryRemoveWebhook(WebhookEvent.Type webhookType, CancellationToken? cancellationToken = null)
+    {
+        cancellationToken ??= CancellationToken.None;
+        cancellationToken.Value.ThrowIfCancellationRequested();
+
+        var request = new HttpRequestMessage(HttpMethod.Delete,
+            $"{string.Format(MailgunApiEndpoints.Webhooks, _options.Value.Domain)}/{WebhookEvent.ByType[webhookType]}");
+
+        request.Headers.Authorization = new("Basic", GetAuthString());
+
+        var response = await _httpClient.SendAsync(request, cancellationToken.Value).ConfigureAwait(false);
+        Trace.WriteLine($"TryRemoveWebhook: ({response.StatusCode}):\n{await response.Content.ReadAsStringAsync()}");
+        return response.IsSuccessStatusCode;
+    }
+
+    [PublicAPI]
     public async Task<MailgunSendingResult> Send(MailgunMessage message, CancellationToken? cancellationToken = null)
     {
         cancellationToken ??= CancellationToken.None;
+        cancellationToken.Value.ThrowIfCancellationRequested();
 
         var request = new HttpRequestMessage(HttpMethod.Post,
             string.Format(MailgunApiEndpoints.Messages, _options.Value.Domain));
@@ -35,7 +82,7 @@ public class MailgunClient
             && await response.Content
                     .ReadFromJsonAsync<MailgunMessageResponse>(cancellationToken: cancellationToken.Value)
                     .ConfigureAwait(false) is
-            { } messageResponse
+                { } messageResponse
                 ? new MailgunSendingResult(true, messageResponse)
                 : new(false);
 
