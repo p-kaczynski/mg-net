@@ -11,7 +11,8 @@ public static class WebhookEvent
         Opened,
         PermanentFail,
         TemporaryFail,
-        Unsubscribed
+        Unsubscribed,
+        Failed
     }
 
     public static readonly IReadOnlyDictionary<string, Type> ByName =
@@ -24,7 +25,8 @@ public static class WebhookEvent
             ["opened"] = Type.Opened,
             ["permanent_fail"] = Type.PermanentFail,
             ["temporary_fail"] = Type.TemporaryFail,
-            ["unsubscribed"] = Type.Unsubscribed
+            ["unsubscribed"] = Type.Unsubscribed,
+            ["failed"] = Type.Failed
         };
 
     public static readonly IReadOnlyDictionary<Type, string> ByType =
