@@ -10,7 +10,7 @@ In place of an official client, this is WIP attempt at exposing Mailgun API func
 
 ### Prerequisites
 
-* NET 7.0 or later
+* NET 8.0 or later
 * Depends on [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/7.0.0)
 
 ## Usage

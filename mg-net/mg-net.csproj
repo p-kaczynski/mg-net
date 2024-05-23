@@ -1,16 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFrameworks>netstandard2.1;net8.0</TargetFrameworks>
+        <LangVersion>11</LangVersion>
         <RootNamespace>mg_net</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
-        <PackageVersion>0.3.0</PackageVersion>
+        <PackageVersion>0.4.0</PackageVersion>
         <Nullable>enable</Nullable>
         <Title>Mailgun .NET Client (Unofficial)</Title>
         <Authors>p-kaczynski</Authors>
         <Description>In place of an official client, this is WIP attempt at exposing Mailgun API functionality in current .NET</Description>
         <Company>p-kaczynski</Company>
-        <AssemblyVersion>0.1</AssemblyVersion>
+        <AssemblyVersion>0.4</AssemblyVersion>
         <NeutralLanguage>en</NeutralLanguage>
         <RepositoryType>git</RepositoryType>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -25,12 +26,17 @@
 
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0"/>
-        <PackageReference Include="JetBrains.Annotations" Version="2023.2.0" PrivateAssets="All"/>
+        <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+        <PackageReference Include="JetBrains.Annotations" Version="2023.3.0" PrivateAssets="All" />
     </ItemGroup>
 
+    <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.1'">
+        <PackageReference Include="System.Text.Json" Version="8.0.3" />
+        <PackageReference Include="System.Net.Http.Json" Version="8.0.0" />
+    </ItemGroup>
+    
     <ItemGroup>
-        <None Update="README.md">
+        <None Include="README.md">
             <Pack>true</Pack>
             <PackagePath>\</PackagePath>
         </None>

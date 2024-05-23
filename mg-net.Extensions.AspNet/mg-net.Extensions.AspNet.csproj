@@ -1,16 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
         <RootNamespace>mg_net.Extensions.AspNet</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
-        <PackageVersion>0.3.0</PackageVersion>
+        <PackageVersion>0.4.0</PackageVersion>
         <Nullable>enable</Nullable>
         <Title>Mailgun .NET Client (Unofficial) - AspNet Configuration Extensions</Title>
         <Authors>p-kaczynski</Authors>
         <Description>Provides convinience methods for configuring Mailgun .NET Client (Unofficial)</Description>
         <Company>p-kaczynski</Company>
-        <AssemblyVersion>0.1</AssemblyVersion>
+        <AssemblyVersion>0.4</AssemblyVersion>
         <NeutralLanguage>en</NeutralLanguage>
         <RepositoryType>git</RepositoryType>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -31,7 +31,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Update="README.md">
+        <None Include="README.md">
             <Pack>true</Pack>
             <PackagePath>\</PackagePath>
         </None>

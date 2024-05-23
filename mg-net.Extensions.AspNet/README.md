@@ -10,7 +10,7 @@ Provides convinience methods for configuring Mailgun .NET Client (Unofficial)
 
 ### Prerequisites
 
-* NET 7.0 or later
+* NET 6.0 or later
 * AspNetCore
 
 ## Usage
